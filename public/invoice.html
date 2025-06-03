@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factură</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .invoice-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 20px;
+        }
+        .company-info h1 {
+            color: #007bff;
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .company-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .invoice-details {
+            text-align: right;
+        }
+        .invoice-number {
+            font-size: 1.5em;
+            color: #333;
+            font-weight: bold;
+        }
+        .client-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .info-box {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+        }
+        .info-box h3 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        .items-table th {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        .items-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .items-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .total-section {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+        .total-box {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            min-width: 250px;
+        }
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+        }
+        .total-final {
+            border-top: 2px solid white;
+            padding-top: 10px;
+            margin-top: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="header">
+            <div class="company-info">
+                <h1>WORKLETO SRL</h1>
+                <p>Str. Exemplu Nr. 123</p>
+                <p>București, România</p>
+                <p>CUI: RO12345678</p>
+                <p>Tel: +40 123 456 789</p>
+            </div>
+            <div class="invoice-details">
+                <div class="invoice-number">FACTURĂ #2024-001</div>
+                <p>Data: <?php echo date('d.m.Y'); ?></p>
+                <p>Scadență: <?php echo date('d.m.Y', strtotime('+30 days')); ?></p>
+            </div>
+        </div>
+
+        <div class="client-info">
+            <div class="info-box">
+                <h3>Facturare către:</h3>
+                <p><strong>CLIENT EXEMPLU SRL</strong></p>
+                <p>Str. Client Nr. 456</p>
+                <p>Cluj-Napoca, România</p>
+                <p>CUI: RO87654321</p>
+            </div>
+            <div class="info-box">
+                <h3>Detalii livrare:</h3>
+                <p><strong>Aceeași adresă</strong></p>
+                <p>Str. Client Nr. 456</p>
+                <p>Cluj-Napoca, România</p>
+                <p>Contact: +40 987 654 321</p>
+            </div>
+        </div>
+
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>Descriere</th>
+                    <th>Cantitate</th>
+                    <th>Preț unitar</th>
+                    <th>TVA</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Servicii dezvoltare web</td>
+                    <td>40 ore</td>
+                    <td>150.00 RON</td>
+                    <td>19%</td>
+                    <td>6,000.00 RON</td>
+                </tr>
+                <tr>
+                    <td>Consultanță tehnică PHP</td>
+                    <td>10 ore</td>
+                    <td>200.00 RON</td>
+                    <td>19%</td>
+                    <td>2,000.00 RON</td>
+                </tr>
+                <tr>
+                    <td>Optimizare performanță</td>
+                    <td>1 pachet</td>
+                    <td>1,500.00 RON</td>
+                    <td>19%</td>
+                    <td>1,500.00 RON</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="total-section">
+            <div class="total-box">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span>9,500.00 RON</span>
+                </div>
+                <div class="total-row">
+                    <span>TVA (19%):</span>
+                    <span>1,805.00 RON</span>
+                </div>
+                <div class="total-row total-final">
+                    <span>TOTAL:</span>
+                    <span>11,305.00 RON</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Modalitate de plată:</strong> Transfer bancar</p>
+            <p><strong>IBAN:</strong> RO49 AAAA 1B31 0075 9384 0000</p>
+            <p><strong>Banca:</strong> Banca Comercială Română</p>
+            <p style="margin-top: 20px; font-style: italic;">
+                Vă mulțumim pentru încrederea acordată!
+            </p>
+        </div>
+    </div>
+</body>
+</html>
